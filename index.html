@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>আমার বাংলাদেশ — তুমি বাংলাদেশ কতটা ঘুরেছ?</title>
+  <meta name="description"
+    content="জেলা বেছে নাও, ঘোরা স্থান ও খাওয়া খাবার টিক দাও, আর তোমার বাংলাদেশ ভ্রমণ কার্ড ডাউনলোড করো।">
+  <meta property="og:title" content="আমার বাংলাদেশ">
+  <meta property="og:description" content="তুমি বাংলাদেশ কতটা ঘুরেছ?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Crect width='10' height='10' rx='2' fill='%230f766e'/%3E%3Ccircle cx='5' cy='5' r='2.4' fill='%23f59e0b'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --card: #fff;
+      --ink: #14213d;
+      --mut: #64708a;
+      --ln: #e6e2d8;
+      --ac: #f59e0b;
+      --tl: #0f766e;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    @media(prefers-color-scheme:dark) {
+      :root:not([data-theme=light]) {
+        --bg: #0b1220;
+        --card: #131c2e;
+        --ink: #eef2fa;
+        --mut: #9aa7c0;
+        --ln: #24304a
+      }
+    }
+
+    :root[data-theme=dark] {
+      --bg: #0b1220;
+      --card: #131c2e;
+      --ink: #eef2fa;
+      --mut: #9aa7c0;
+      --ln: #24304a
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 17px/1.6 "Hind Siliguri", system-ui, sans-serif
+    }
+
+    button,
+    input {
+      font: inherit;
+      color: inherit
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--ac);
+      outline-offset: 2px
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px
+    }
+
+    header {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 20;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--ln)
+    }
+
+    .hr {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      position: relative
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      white-space: nowrap
+    }
+
+    input[type=search] {
+      flex: 1;
+      min-width: 0;
+      background: var(--card);
+      border: 1px solid var(--ln);
+      border-radius: 12px;
+      padding: 9px 14px
+    }
+
+    .btn {
+      border: 1px solid var(--ln);
+      background: var(--card);
+      border-radius: 14px;
+      padding: 10px 18px;
+      font-weight: 600;
+      transition: .15s
+    }
+
+    .btn:active {
+      transform: scale(.97)
+    }
+
+    .pri {
+      background: linear-gradient(135deg, var(--ac), #f97316);
+      color: #1a1200;
+      border: 0
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--ln);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 6px 24px #0000000a
+    }
+
+    h1 {
+      font-size: clamp(34px, 7vw, 56px);
+      line-height: 1.2;
+      margin: 28px 0 4px
+    }
+
+    h2 {
+      font-size: 26px;
+      margin: 36px 0 8px
+    }
+
+    .mut {
+      color: var(--mut)
+    }
+
+    .stats {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 18px
+    }
+
+    .stat {
+      text-align: center;
+      padding: 14px 8px
+    }
+
+    .stat b {
+      display: block;
+      font-size: clamp(30px, 8vw, 52px);
+      line-height: 1.2
+    }
+
+    .stat span {
+      font-size: clamp(13px, 3.4vw, 17px)
+    }
+
+    .map {
+      width: 100%;
+      max-height: 78vh
+    }
+
+    .dd {
+      fill: color-mix(in srgb, var(--tl) 10%, var(--card));
+      stroke: var(--mut);
+      stroke-width: .6;
+      cursor: pointer;
+      transition: fill .15s
+    }
+
+    .dd:hover,
+    .dd:focus {
+      fill: color-mix(in srgb, var(--ac) 45%, var(--card));
+      outline: none
+    }
+
+    .dd.v {
+      fill: var(--ac)
+    }
+
+    .lb {
+      fill: var(--ink);
+      pointer-events: none;
+      text-anchor: middle;
+      dominant-baseline: central;
+      font-weight: 600;
+      paint-order: stroke;
+      stroke: var(--card);
+      stroke-width: 2.4px;
+      stroke-linejoin: round;
+      transition: transform .15s
+    }
+
+    .lb.hv {
+      font-weight: 700;
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: scale(1.2)
+    }
+
+    .ol {
+      fill: none;
+      stroke: var(--tl);
+      stroke-width: 1.4
+    }
+
+    .sr {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border: 1px solid var(--ln);
+      border-radius: 14px;
+      max-height: 60vh;
+      overflow: auto;
+      box-shadow: 0 12px 30px #0003
+    }
+
+    .sr button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: 0;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--ln)
+    }
+
+    .ov {
+      position: fixed;
+      inset: 0;
+      background: #0009;
+      z-index: 50;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      animation: fi .2s
+    }
+
+    .sh {
+      background: var(--card);
+      width: 100%;
+      max-width: 560px;
+      max-height: 92vh;
+      overflow: auto;
+      border-radius: 24px 24px 0 0;
+      padding: 20px 20px 0;
+      animation: up .25s
+    }
+
+    @media(min-width:700px) {
+      .ov {
+        align-items: center;
+        padding: 16px
+      }
+
+      .sh {
+        border-radius: 24px
+      }
+    }
+
+    @keyframes fi {
+      from {
+        opacity: 0
+      }
+    }
+
+    @keyframes up {
+      from {
+        transform: translateY(30px);
+        opacity: 0
+      }
+    }
+
+    .ck {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      min-height: 50px;
+      padding: 6px 10px;
+      border-radius: 12px;
+      cursor: pointer
+    }
+
+    .ck:hover {
+      background: var(--bg)
+    }
+
+    .ck input {
+      width: 24px;
+      height: 24px;
+      accent-color: var(--ac);
+      flex: none
+    }
+
+    .tag {
+      font-size: 14px;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 99px;
+      border: 1px solid var(--ln);
+      background: var(--bg)
+    }
+
+    .tag.ok {
+      color: var(--tl);
+      border-color: var(--tl)
+    }
+
+    .done {
+      position: sticky;
+      bottom: 0;
+      background: var(--card);
+      padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px))
+    }
+
+    .done .btn {
+      width: 100%;
+      font-size: 18px
+    }
+
+    .cv {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: 12px auto;
+      border-radius: 18px;
+      box-shadow: 0 14px 40px #0004
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+
+    .note {
+      font-size: 14px
+    }
+
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: var(--bg);
+      padding: 12px 18px;
+      border-radius: 14px;
+      z-index: 99;
+      font-weight: 600;
+      max-width: 90vw
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important
+      }
+    }
+
+    body {
+      background: radial-gradient(1100px 560px at 8% -10%, color-mix(in srgb, var(--tl) 20%, transparent), transparent), radial-gradient(900px 500px at 100% 0, color-mix(in srgb, var(--ac) 14%, transparent), transparent), var(--bg)
+    }
+
+    .hero {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      padding: 30px 0 4px
+    }
+
+    @media(max-width:860px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .hero h1 {
+      margin: 6px 0 8px
+    }
+
+    .xc {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      padding: 22px;
+      color: #fff;
+      background: linear-gradient(135deg, #0f172a, #115e59);
+      border: 1px solid #ffffff2e;
+      box-shadow: 0 20px 50px #0f172a55;
+      transition: transform .3s, box-shadow .3s
+    }
+
+    .xc:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 60px #0f172a77
+    }
+
+    .xc:before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: radial-gradient(#f59e0b88, transparent 70%)
+    }
+
+    .xc>* {
+      position: relative
+    }
+
+    .xc-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: #fcd34d
+    }
+
+    .xc-name {
+      font-size: clamp(34px, 8vw, 48px);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-top: 12px;
+      word-break: break-word
+    }
+
+    .xc-sub {
+      opacity: .7;
+      font-size: 14px
+    }
+
+    .xc-st {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 18px 0 12px
+    }
+
+    .xc-st div {
+      background: #ffffff1a;
+      backdrop-filter: blur(8px);
+      border: 1px solid #ffffff26;
+      border-radius: 16px;
+      padding: 10px 6px;
+      text-align: center
+    }
+
+    .xc-st b {
+      display: block;
+      font-size: 30px;
+      line-height: 1.2
+    }
+
+    .xc-st span {
+      font-size: 12.5px;
+      opacity: .85
+    }
+
+    .xc-q {
+      font-style: italic;
+      opacity: .85;
+      margin: 6px 0 12px
+    }
+
+    .lnk {
+      background: #ffffff22;
+      border: 1px solid #ffffff33;
+      color: #fff;
+      border-radius: 99px;
+      padding: 5px 14px;
+      font-size: 14px
+    }
+
+    .wel {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: linear-gradient(160deg, #050b18f2, #0b3b38f2);
+      animation: fi .6s
+    }
+
+    .wbg {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      opacity: .25;
+      pointer-events: none
+    }
+
+    .wm {
+      height: 92vh;
+      max-width: 100%
+    }
+
+    .wm path {
+      fill: #14b8a622;
+      stroke: #fff;
+      stroke-width: .5
+    }
+
+    .wc {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      max-width: 480px;
+      width: 100%;
+      animation: up .7s
+    }
+
+    .wc h2 {
+      font-size: clamp(30px, 7vw, 42px);
+      margin: 10px 0 6px
+    }
+
+    .wc p {
+      opacity: .8;
+      margin: 0 0 22px
+    }
+
+    .ni {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 18px;
+      border: 1px solid #ffffff44;
+      background: #ffffff14;
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      animation: glow 3s ease-in-out infinite
+    }
+
+    .ni::placeholder {
+      color: #ffffff88
+    }
+
+    .ni:focus {
+      outline: none;
+      border-color: var(--ac)
+    }
+
+    .wc .btn {
+      margin-top: 16px;
+      font-size: 18px;
+      padding: 12px 26px
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 12px #14b8a655
+      }
+
+      50% {
+        box-shadow: 0 0 30px #f59e0b66;
+        transform: translateY(-2px)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="page"></div>
+  <div id="mod"></div>
+  <div id="wel"></div>
+  <div id="toast" role="status" hidden></div>
+  <script>
+    const $ = s => document.querySelector(s), esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const bn = n => String(n).replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]);
+    const DIVN = { D: "ঢাকা", C: "চট্টগ্রাম", R: "রাজশাহী", K: "খুলনা", B: "বরিশাল", S: "সিলেট", G: "রংপুর", M: "ময়মনসিংহ" };
+    /* বাংলা নাম|ইংরেজি নাম/বিকল্প|বিভাগ|অক্ষাংশ|দ্রাঘিমাংশ|জনপ্রিয় স্থান;...|জনপ্রিয় খাবার;... */
+    const RAW = `ঢাকা|Dhaka|D|23.81|90.41|লালবাগ কেল্লা;আহসান মঞ্জিল;জাতীয় সংসদ ভবন;সদরঘাট;তারা মসজিদ;বাংলাদেশ জাতীয় জাদুঘর;রমনা পার্ক;সোহরাওয়ার্দী উদ্যান;ঢাকেশ্বরী জাতীয় মন্দির;বাহাদুর শাহ পার্ক;জাতীয় চিড়িয়াখানা (মিরপুর);জাতীয় বোটানিক্যাল গার্ডেন (মিরপুর);বলধা গার্ডেন;হাতিরঝিল;বায়তুল মোকাররম জাতীয় মসজিদ;মুক্তিযুদ্ধ জাদুঘর;সাত গম্বুজ মসজিদ;আর্মেনীয় গির্জা;জাতীয় স্মৃতিসৌধ (সাভার)|কাচ্চি বিরিয়ানি;বাকরখানি;ফুচকা;চটপটি
+ফরিদপুর|Faridpur|D|23.60|89.84|কবি জসীমউদ্দীনের বাড়ি;পদ্মা নদীর ঘাট;মথুরাপুর দেউল;কবি জসীমউদ্দীন স্মৃতি জাদুঘর|খেজুরের গুড়;ছানার মিষ্টি
+গাজীপুর|Gazipur|D|24.00|90.42|বঙ্গবন্ধু সাফারি পার্ক;ভাওয়াল জাতীয় উদ্যান;নুহাশ পল্লী;জয়দেবপুর রাজবাড়ী;ভাওয়ালের শালবন|কাঁঠাল;স্থানীয় পিঠা
+গোপালগঞ্জ|Gopalganj|D|23.00|89.83|টুঙ্গিপাড়া সমাধিসৌধ;মধুমতী নদীর ঘাট;বঙ্গবন্ধুর পৈতৃক বাড়ি (টুঙ্গিপাড়া);বাইগার নদী|খেজুরের গুড়;ছানার মিষ্টি
+কিশোরগঞ্জ|Kishoreganj|D|24.43|90.78|শোলাকিয়া ঈদগাহ;এগারসিন্দুর;নিকলী হাওর;জঙ্গলবাড়ী দুর্গ;মিঠামইন হাওর;ইটনা হাওর;ভৈরব রেল সেতু|হাওরের মাছ;পাকন পিঠা
+মাদারীপুর|Madaripur|D|23.17|90.20|শকুনি লেক;কুমার নদ|ইলিশ;খেজুরের গুড়
+মানিকগঞ্জ|Manikganj|D|23.86|90.00|বালিয়াটি জমিদার বাড়ি;তেওতা জমিদার বাড়ি;আরিচা ঘাট;ধলেশ্বরী নদী|ইলিশ;স্থানীয় মিষ্টি
+মুন্সিগঞ্জ|Munshiganj|D|23.55|90.53|পদ্মা সেতু (মাওয়া প্রান্ত);ইদ্রাকপুর কেল্লা;বজ্রযোগিনী গ্রাম;অতীশ দীপঙ্করের ভিটা;রামপাল দিঘি|ইলিশ;মাওয়ার মাছ ভাজা
+নারায়ণগঞ্জ|Narayanganj|D|23.62|90.50|সোনারগাঁও পানাম নগর;লোক ও কারুশিল্প জাদুঘর;হাজীগঞ্জ দুর্গ;গোয়ালদি মসজিদ;সোনাকান্দা দুর্গ;বিবি মরিয়মের সমাধি;কদম রসুল দরগাহ;শীতলক্ষ্যা নদী|ইলিশ;স্থানীয় মিষ্টি
+নরসিংদী|Narsingdi|D|23.92|90.72|ওয়ারী-বটেশ্বর প্রত্নস্থল;মাধবদী|ইলিশ;পিঠা
+রাজবাড়ী|Rajbari|D|23.76|89.64|গোয়ালন্দ ঘাট;দৌলতদিয়া ঘাট;পদ্মা-যমুনার মিলনস্থল (গোয়ালন্দ)|ইলিশ;খেজুরের গুড়
+শরীয়তপুর|Shariatpur|D|23.24|90.43|পদ্মা সেতু (জাজিরা প্রান্ত);নড়িয়া|ইলিশ;পদ্মার মাছ
+টাঙ্গাইল|Tangail|D|24.25|89.92|মধুপুর জাতীয় উদ্যান;আতিয়া মসজিদ;মহেড়া জমিদার বাড়ি;ধনবাড়ী নবাব বাড়ি;মাওলানা ভাসানীর মাজার (সন্তোষ);বঙ্গবন্ধু যমুনা সেতু (ভুঞাপুর প্রান্ত)|পোড়াবাড়ীর চমচম;মধুপুরের আনারস
+বান্দরবান|Bandarban|C|22.20|92.22|নীলগিরি;নীলাচল;বগালেক;কেওক্রাডং;স্বর্ণমন্দির;নাফাখুম;সাঙ্গু নদী;শৈলপ্রপাত;চিম্বুক পাহাড়;তাজিংডং (বিজয়);রেমাক্রি;আমিয়াখুম;মেঘলা পর্যটন কমপ্লেক্স;প্রান্তিক লেক|বাঁশের চোঙায় রান্না;বাঁশকোড়ল
+ব্রাহ্মণবাড়িয়া|Brahmanbaria|C|23.96|91.11|তিতাস নদী;আখাউড়া;আশুগঞ্জ নদীবন্দর|তিতাসের মাছ;ছানার মিষ্টি
+চাঁদপুর|Chandpur|C|23.23|90.67|মেঘনার মোহনা;ডাকাতিয়া নদী;হাজীগঞ্জ বড় মসজিদ|ইলিশ ভাজা;ভাপা ইলিশ
+চট্টগ্রাম|Chattogram/Chittagong|C|22.36|91.78|পতেঙ্গা সমুদ্রসৈকত;ফয়’স লেক;পারকি সৈকত;যুদ্ধ সমাধি (ওয়ার সিমেট্রি);বাটালি হিল;নেভাল বিচ;জাতিতাত্ত্বিক জাদুঘর;ডিসি হিল;সীতাকুণ্ড ইকোপার্ক;চন্দ্রনাথ পাহাড়;খৈয়াছড়া ঝর্ণা;গুলিয়াখালী সৈকত;বাঁশখালী ইকোপার্ক;শাহ আমানত মাজার;বায়েজিদ বোস্তামির মাজার;বঙ্গবন্ধু টানেল|মেজবানি মাংস;কালা ভুনা;শুঁটকি
+কুমিল্লা|Cumilla/Comilla|C|23.46|91.18|ময়নামতি প্রত্নস্থল;শালবন বিহার;কোটবাড়ী;ধর্মসাগর;কুমিল্লা ওয়ার সিমেট্রি;ময়নামতি জাদুঘর;কুটিলা মুড়া;আনন্দ বিহার;লালমাই পাহাড়;চারপত্র মুড়া;গোমতী নদী|রসমালাই;ছানার মিষ্টি
+কক্সবাজার|Cox's Bazar/Coxs Bazar|C|21.43|91.98|কক্সবাজার সমুদ্রসৈকত;ইনানী সমুদ্রসৈকত;হিমছড়ি;মেরিন ড্রাইভ;মহেশখালী;সেন্ট মার্টিন দ্বীপ;লাবণী সৈকত;সুগন্ধা সৈকত;কলাতলী সৈকত;রামু বৌদ্ধ বিহার;আদিনাথ মন্দির (মহেশখালী);শাহপরীর দ্বীপ;সোনাদিয়া দ্বীপ;ডুলহাজারা সাফারি পার্ক;বার্মিজ মার্কেট|শুঁটকি;সামুদ্রিক খাবার;কাঁকড়া
+ফেনী|Feni|C|23.02|91.40|মুহুরী সেচ প্রকল্প|স্থানীয় পিঠা;ভর্তা-ভাত
+খাগড়াছড়ি|Khagrachhari/Khagrachari|C|23.12|91.98|আলুটিলা গুহা;রিছাং ঝর্ণা;হাজাছড়া ঝর্ণা;মিলনছড়ি;রামগড় স্থলবন্দর;তাবলছড়ি ঝর্ণা|বাঁশকোড়ল;পাহাড়ি রান্না
+লক্ষ্মীপুর|Lakshmipur/Laxmipur|C|22.94|90.84|মেঘনা নদীর তীর;রামগতি;চর আলেকজান্ডার (রামগতি)|ইলিশ;দুধের মিষ্টি
+নোয়াখালী|Noakhali|C|22.82|91.10|নিঝুম দ্বীপ;হাতিয়া;জয়াগ গান্ধী আশ্রম;সুবর্ণচর;ঠেঙ্গার চর|ইলিশ;শুঁটকি
+রাঙামাটি|Rangamati|C|22.65|92.17|কাপ্তাই হ্রদ;ঝুলন্ত সেতু;সাজেক ভ্যালি;শুভলং ঝর্ণা;রাজবন বিহার;কাপ্তাই জাতীয় উদ্যান;পেদা টিংটিং;উপজাতীয় জাদুঘর;কাপ্তাই বাঁধ|বাঁশের চোঙায় রান্না;কাপ্তাইয়ের মাছ
+বগুড়া|Bogura/Bogra|R|24.85|89.37|মহাস্থানগড়;বেহুলার বাসর ঘর;গোকুল মেধ;মহাস্থান জাদুঘর;ভাসু বিহার;খেরুয়া মসজিদ;বগুড়া নবাব প্যালেস|বগুড়ার দই;ছানার মিষ্টি
+চাঁপাইনবাবগঞ্জ|Chapainawabganj/Nawabganj|R|24.60|88.28|ছোট সোনা মসজিদ;কোতোয়ালী দরজা;বড় সোনা মসজিদ;দারাসবাড়ী মসজিদ;সোনা মসজিদ স্থলবন্দর;মহানন্দা নদী|ক্ষীরশাপাতি আম;ল্যাংড়া আম
+জয়পুরহাট|Joypurhat|R|25.10|89.02|পাঁচবিবি;জয়পুরহাট চিনিকল|গ্রামবাংলার পিঠা;দই
+নওগাঁ|Naogaon|R|24.80|88.94|পাহাড়পুর বৌদ্ধ বিহার;কুসুম্বা মসজিদ;জগদ্দল বিহার;পাহাড়পুর জাদুঘর;হলুদ বিহার|কাটারিভোগ চালের পায়েস;আম
+নাটোর|Natore|R|24.42|89.00|নাটোর রাজবাড়ী;উত্তরা গণভবন;দিঘাপতিয়া রাজবাড়ী;চলনবিল|কাঁচাগোল্লা
+পাবনা|Pabna|R|24.00|89.23|হার্ডিঞ্জ ব্রিজ;লালন শাহ সেতু;চলনবিল;পাকশী (ঈশ্বরদী)|ঘি;পদ্মার ইলিশ
+রাজশাহী|Rajshahi|R|24.37|88.60|পদ্মা গার্ডেন;বরেন্দ্র জাদুঘর;পুঠিয়া রাজবাড়ী;পুঠিয়া মন্দির কমপ্লেক্স;হযরত শাহ মখদুমের মাজার;বাঘা শাহী মসজিদ;রাজশাহী বড়কুঠি|আম;লিচু
+সিরাজগঞ্জ|Sirajganj|R|24.45|89.70|বঙ্গবন্ধু যমুনা সেতু;রবীন্দ্র কাছারিবাড়ি (শাহজাদপুর);চলনবিল;তাড়াশ রাজবাড়ী;যমুনা নদী|দই;ঘোল
+বাগেরহাট|Bagerhat|K|22.66|89.79|ষাটগম্বুজ মসজিদ;খানজাহান আলীর মাজার;করমজল;কটকা সৈকত;মোংলা বন্দর;ঘোড়া দীঘি;নয়গম্বুজ মসজিদ;সিঙ্গাইর মসজিদ;বিবি বেগনি মসজিদ|গলদা চিংড়ি;সুন্দরবনের মধু
+চুয়াডাঙ্গা|Chuadanga|K|23.64|88.85|দর্শনা;জীবননগর|খেজুরের গুড়;ভর্তা
+যশোর|Jashore/Jessore|K|23.17|89.21|মধুসূদনের বাড়ি (সাগরদাঁড়ি);বেনাপোল স্থলবন্দর;চাচড়া রাজবাড়ী;কপোতাক্ষ নদ|খেজুরের রস;খেজুরের গুড়
+ঝিনাইদহ|Jhenaidah/Jhenaidaha|K|23.54|89.17|শৈলকুপা;কোটচাঁদপুর|খেজুরের গুড়;পিঠা
+খুলনা|Khulna|K|22.82|89.55|সুন্দরবন;রূপসা নদীর ঘাট;দাকোপ;হাদিস পার্ক;রূপসা সেতু|চুইঝালের মাংস;চিংড়ি মালাইকারি
+কুষ্টিয়া|Kushtia|K|23.90|89.12|রবীন্দ্র কুঠিবাড়ি (শিলাইদহ);লালন আখড়াবাড়ি (ছেঁউড়িয়া);গড়াই নদী;মীর মশাররফ হোসেনের বাড়ি (লাহিনীপাড়া)|তিলের খাজা;ইলিশ
+মাগুরা|Magura|K|23.49|89.42|মহম্মদপুর;মধুমতী নদী;নবগঙ্গা নদী;সীতারাম রায়ের স্মৃতিচিহ্ন (মহম্মদপুর)|পিঠা;খেজুরের গুড়
+মেহেরপুর|Meherpur|K|23.76|88.63|মুজিবনগর স্মৃতিসৌধ;আম্রকানন|আম;পিঠা
+নড়াইল|Narail|K|23.17|89.50|শিল্পী এস এম সুলতানের বাড়ি;চিত্রা নদী;নড়াইল জমিদার বাড়ি|খেজুরের গুড়;ভর্তা
+সাতক্ষীরা|Satkhira|K|22.71|89.07|সুন্দরবন (শ্যামনগর);যশোরেশ্বরী কালী মন্দির;প্রতাপাদিত্যের রাজবাড়ী (ঈশ্বরীপুর)|চিংড়ি মাছ;কাঁকড়া
+বরগুনা|Barguna|B|22.16|90.12|পায়রা নদী;বিষখালী নদী|ইলিশ;শুঁটকি
+বরিশাল|Barishal/Barisal|B|22.70|90.37|দুর্গাসাগর দীঘি;গুঠিয়া বায়তুল আমান মসজিদ;কীর্তনখোলা নদী;অক্সফোর্ড মিশন গির্জা;বেলস পার্ক;মাধবপাশা দীঘি;শায়েস্তাবাদ রাজবাড়ী|ইলিশ;ভাপা ইলিশ
+ভোলা|Bhola|B|22.69|90.65|মনপুরা দ্বীপ;চর কুকরি-মুকরি;ঢালচর;চর ফ্যাশন;তেঁতুলিয়া নদী;ইলিশা ঘাট|মহিষের দই;ইলিশ
+ঝালকাঠি|Jhalokati/Jhalakati|B|22.64|90.20|ভিমরুলি ভাসমান পেয়ারা বাজার;কীর্তিপাশা জমিদার বাড়ি;গাবখান সেতু;সুগন্ধা নদী|পেয়ারা;আমড়া
+পটুয়াখালী|Patuakhali|B|22.36|90.33|কুয়াকাটা সমুদ্রসৈকত;লেবুর চর;গঙ্গামতি;সীমা বৌদ্ধ মন্দির;ফাতরার বন;রাখাইন পল্লী (কুয়াকাটা);শুঁটকি পল্লী (আলীপুর-মহিপুর);মিশ্রিপাড়া বৌদ্ধ মন্দির;পায়রা সমুদ্রবন্দর|শুঁটকি;কাঁকড়া
+পিরোজপুর|Pirojpur|B|22.58|89.97|আটঘর-কুড়িয়ানা ভাসমান বাজার;সন্ধ্যা নদী;বলেশ্বর নদী|পেয়ারা;আমড়া
+হবিগঞ্জ|Habiganj|S|24.38|91.42|সাতছড়ি জাতীয় উদ্যান;রেমা-কালেঙ্গা অভয়ারণ্য;মাধবপুর লেক;বাণিয়াচং হাওর;চুনারুঘাটের চা বাগান|চা;আনারস
+মৌলভীবাজার|Moulvibazar/Maulvibazar|S|24.48|91.77|শ্রীমঙ্গল চা বাগান;লাউয়াছড়া জাতীয় উদ্যান;মাধবকুণ্ড জলপ্রপাত;হামহাম ঝর্ণা;বাইক্কা বিল;নীলকণ্ঠ চা কেবিন;চা জাদুঘর (শ্রীমঙ্গল);খাসিয়া পুঞ্জি;মণিপুরি পল্লী (কমলগঞ্জ);রাজকান্দি রিজার্ভ ফরেস্ট|সাত রঙের চা;আনারস
+সুনামগঞ্জ|Sunamganj|S|25.07|91.40|টাঙ্গুয়ার হাওর;নীলাদ্রি লেক;শিমুল বাগান;বারেকটিলা;জাদুকাটা নদী;টেকেরঘাট;লাকমাছড়া;হাসন রাজার বাড়ি;শনির হাওর|হাওরের মাছ;হাঁসের মাংস
+সিলেট|Sylhet|S|24.90|91.87|জাফলং;রাতারগুল সোয়াম্প ফরেস্ট;লালাখাল;বিছনাকান্দি;শাহজালালের মাজার;পান্তুমাই;হযরত শাহ পরানের মাজার;মালনীছড়া চা বাগান;সাদাপাথর (ভোলাগঞ্জ);খাদিমনগর জাতীয় উদ্যান;কিন ব্রিজ;ওসমানী জাদুঘর;টিলাগড় ইকোপার্ক;তামাবিল|শাতকরা দিয়ে গরুর মাংস;আখনি পোলাও;শিদল ভর্তা
+দিনাজপুর|Dinajpur|G|25.63|88.64|কান্তজিউ মন্দির;রামসাগর জাতীয় উদ্যান;নয়াবাদ মসজিদ;দিনাজপুর রাজবাড়ী;স্বপ্নপুরী;সীতাকোট বিহার;হিলি স্থলবন্দর|কাটারিভোগ চাল;লিচু
+গাইবান্ধা|Gaibandha|G|25.33|89.53|যমুনা-ব্রহ্মপুত্রের চর;ফুলছড়ি ঘাট|পিঠা;দই
+কুড়িগ্রাম|Kurigram|G|25.81|89.65|চিলমারী বন্দর;ধরলা নদী;ব্রহ্মপুত্র নদ;সোনাহাট স্থলবন্দর|নদীর মাছ;চিড়া-দই
+লালমনিরহাট|Lalmonirhat|G|25.92|89.45|তিস্তা নদী;বুড়িমারী স্থলবন্দর;দহগ্রাম-আঙ্গরপোতা তিনবিঘা করিডর;লালমনিরহাট রেলওয়ে জংশন|ভর্তা;পিঠা
+নীলফামারী|Nilphamari|G|25.93|88.86|তিস্তা ব্যারাজ;নীলসাগর;ডিমলা রাজবাড়ী|ভর্তা;পিঠা
+পঞ্চগড়|Panchagarh|G|26.34|88.55|তেঁতুলিয়া ডাকবাংলো;বাংলাবান্ধা স্থলবন্দর;মহারাজার দিঘি;ভিতরগড় দুর্গ;তেঁতুলিয়া চা বাগান;জিরো পয়েন্ট (তেঁতুলিয়া);করতোয়া নদী|তেঁতুলিয়ার চা;পিঠা
+রংপুর|Rangpur|G|25.75|89.25|তাজহাট জমিদার বাড়ি;কারমাইকেল কলেজ;ভিন্ন জগৎ;বেগম রোকেয়ার বাড়ি (পায়রাবন্দ);রংপুর চিড়িয়াখানা|হাঁড়িভাঙা আম;পিঠা
+ঠাকুরগাঁও|Thakurgaon|G|26.03|88.47|রাণীশংকৈল;বালিয়াডাঙ্গী;নেকমরদ মেলা|পিঠা;মুড়ি
+জামালপুর|Jamalpur|M|24.92|89.94|যমুনা নদী;বাহাদুরাবাদ ঘাট|পিঠা;দই
+ময়মনসিংহ|Mymensingh|M|24.75|90.40|শশী লজ;আলেকজান্ডার ক্যাসল;জয়নুল আবেদিন সংগ্রহশালা;ব্রহ্মপুত্র নদ;মুক্তাগাছা জমিদার বাড়ি;গৌরীপুর জমিদার বাড়ি;বাংলাদেশ কৃষি বিশ্ববিদ্যালয় ক্যাম্পাস|মুক্তাগাছার মণ্ডা;মিষ্টি দই
+নেত্রকোণা|Netrokona|M|24.87|90.73|বিজয়পুর সাদা মাটির পাহাড়;বিরিশিরি সংস্কৃতি একাডেমি;সোমেশ্বরী নদী;রানীখং মিশন;কমলারানীর সাগরদিঘি;খালিয়াজুরি হাওর|বালিশ মিষ্টি;হাওরের মাছ
+শেরপুর|Sherpur|M|25.02|90.02|গজনী অবকাশ কেন্দ্র;মধুটিলা ইকোপার্ক;ভোগাই নদী;গারো পাহাড় (ঝিনাইগাতী ও নালিতাবাড়ী)|পিঠা;দই`;
+    const DS = RAW.split("\n").map(l => { const [n, e, v, a, o, p, f] = l.split("|"), en = e.split("/"); return { id: en[0].toLowerCase().replace(/\W/g, ""), n, en, div: DIVN[v], lat: +a, lon: +o, pl: p.split(";"), fd: f.split(";") } });
+    if (DS.length !== 64 || new Set(DS.map(d => d.id)).size !== 64) console.error("জেলার সংখ্যা ৬৪ নয়!");
+    const Store = { get(k) { try { return JSON.parse(localStorage.getItem(k)) } catch { return null } }, set(k, v) { try { localStorage.setItem(k, typeof v === "string" ? v : JSON.stringify(v)); return true } catch { return false } } };
+    let st = Object.assign({ p: {}, f: {}, theme: "", nick: "" }, Store.get("bdx.v2") || {}); if (typeof st.p !== "object" || !st.p) st.p = {}; if (typeof st.f !== "object" || !st.f) st.f = {};
+    let q = "", geoRaw = null; try { geoRaw = localStorage.getItem("bdx.geo") } catch { }
+    const th = () => st.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const cnt = (d, k) => (k === "p" ? d.pl : d.fd).filter((_, i) => st[k][d.id + ":" + i]).length;
+    function stats() { let dc = 0, pc = 0, fc = 0; DS.forEach(d => { const p = cnt(d, "p"); pc += p; fc += cnt(d, "f"); if (p) dc++ }); return { dc, pc, fc } }
+    const isV = d => cnt(d, "p") > 0;
+    function toast(m) { const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 3000) }
+    /* ---------- মানচিত্র: প্রকৃত GeoJSON থাকলে সেটি, না থাকলে আনুমানিক বিভাজন ---------- */
+    const OUT = [[88.1, 24.5], [88.7, 23.2], [89.0, 22.3], [89.6, 21.8], [90.6, 22.0], [91.4, 22.7], [91.9, 21.5], [92.3, 20.7], [92.6, 21.4], [92.2, 22.8], [92.5, 23.6], [91.6, 24.2], [92.3, 24.9], [91.5, 25.2], [90.2, 25.2], [89.8, 25.8], [89.8, 26.3], [88.5, 26.6], [88.0, 26.0], [88.4, 25.2]];
+    const KX = Math.cos(23.7 * Math.PI / 180);
+    const norm = s => String(s).toLowerCase().replace(/district|zila|জেলা/g, "").replace(/[^a-z\u0980-\u09ff]/g, "");
+    function mkProj(b) { const W = (b[2] - b[0]) * KX, H = b[3] - b[1], s = Math.min(470 / W, 640 / H); return { W: W * s + 10, H: H * s + 10, p: (lo, la) => [+((lo - b[0]) * KX * s + 5).toFixed(1), +((b[3] - la) * s + 5).toFixed(1)] } }
+    function clipHP(P, a, b) { const g = p => (b[0] - a[0]) * p[0] + (b[1] - a[1]) * p[1] - ((b[0] * b[0] + b[1] * b[1]) - (a[0] * a[0] + a[1] * a[1])) / 2, o = []; for (let i = 0; i < P.length; i++) { const p = P[i], q = P[(i + 1) % P.length], gp = g(p), gq = g(q); if (gp <= 0) o.push(p); if ((gp < 0 && gq > 0) || (gp > 0 && gq < 0)) { const t = gp / (gp - gq); o.push([p[0] + t * (q[0] - p[0]), p[1] + t * (q[1] - p[1])]) } } return o }
+    const ringD = (r, pr) => "M" + r.map(c => pr(c[0], c[1]).join(",")).join("L") + "Z";
+    function buildMap() {
+      if (geoRaw) {
+        try {
+          const g = JSON.parse(geoRaw), fs = g.type === "FeatureCollection" ? g.features : g.type === "Feature" ? [g] : [], idx = new Map();
+          DS.forEach((d, i) => [d.n, ...d.en].forEach(a => idx.set(norm(a), i))); const geoms = DS.map(() => []);
+          fs.forEach(f => { if (!f || !f.geometry) return; for (const v of Object.values(f.properties || {})) { if (typeof v !== "string") continue; const i = idx.get(norm(v)); if (i !== undefined) { geoms[i].push(f.geometry); return } } });
+          if (geoms.filter(a => a.length).length >= 55) {
+            let b = [1e9, 1e9, -1e9, -1e9]; const polys = geoms.map(a => a.flatMap(x => x.type === "Polygon" ? [x.coordinates] : x.type === "MultiPolygon" ? x.coordinates : []));
+            polys.forEach(a => a.forEach(pg => pg.forEach(r => r.forEach(c => { b = [Math.min(b[0], c[0]), Math.min(b[1], c[1]), Math.max(b[2], c[0]), Math.max(b[3], c[1])] }))));
+            const P = mkProj(b); return { real: 1, W: P.W, H: P.H, P: P.p, paths: polys.map(a => a.map(pg => pg.map(r => ringD(r, P.p)).join("")).join("")), out: "" }
+          }
+        } catch (e) { console.error(e) }
+      }
+      const b = [87.9, 20.6, 92.7, 26.7], P = mkProj(b), c = d => [d.lon * KX, d.lat], base = OUT.map(p => [p[0] * KX, p[1]]);
+      const paths = DS.map(d => { let poly = base; DS.forEach(o => { if (o !== d && poly.length > 2) poly = clipHP(poly, c(d), c(o)) }); return poly.length > 2 ? ringD(poly.map(p => [p[0] / KX, p[1]]), P.p) : "" });
+      return { real: 0, W: P.W, H: P.H, P: P.p, paths, out: ringD(OUT, P.p) }
+    }
+    let M = buildMap();
+    function bbw(i) { const m = M.bw || (M.bw = []); if (m[i] !== undefined) return m[i]; const n = (M.paths[i] || "").match(/-?\d+\.?\d*/g); if (!n) return m[i] = 40; let lo = 1e9, hi = -1e9; for (let k = 0; k < n.length; k += 2) { lo = Math.min(lo, +n[k]); hi = Math.max(hi, +n[k]) } return m[i] = hi - lo }
+    function hv(id, on) { const e = document.getElementById('lb-' + id); if (e) e.classList.toggle('hv', !!on) }
+    function mapSVG() { return `<svg class="map" viewBox="0 0 ${M.W.toFixed(0)} ${M.H.toFixed(0)}" role="group" aria-label="বাংলাদেশের জেলা-মানচিত্র">` + DS.map((d, i) => { const v = isV(d); return M.paths[i] ? `<path class="dd ${v ? "v" : ""}" d="${M.paths[i]}" onmouseenter="hv('${d.id}',1)" onmouseleave="hv('${d.id}',0)" onfocus="hv('${d.id}',1)" onblur="hv('${d.id}',0)" tabindex="0" role="button" aria-label="${d.n} — ${v ? "ঘোরা হয়েছে" : "এখনও ঘোরা হয়নি"}" onclick="openD('${d.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openD('${d.id}')}"><title>${d.n}</title></path>` : "" }).join("") + (M.out ? `<path class="ol" d="${M.out}"/>` : "") + DS.map((d, i) => { const [x, y] = M.P(d.lon, d.lat), fs = Math.max(8, Math.min(13, bbw(i) * 1.25 / (d.n.length * 0.6))).toFixed(1); return `<text class="lb" id="lb-${d.id}" font-size="${fs}" x="${x}" y="${y}">${isV(d) ? "✓ " : ""}${d.n}</text>` }).join("") + "</svg>" }
+    /* ---------- পাতা ---------- */
+    const flag = `<svg width="28" height="19" viewBox="0 0 28 19" aria-hidden="true"><rect width="28" height="19" rx="3" fill="#0f766e"/><circle cx="12.5" cy="9.5" r="5.5" fill="#e11d48"/></svg>`;
+    function results() {
+      const t = norm(q); if (!t) return ""; const o = []; DS.forEach(d => { if ([d.n, ...d.en].some(a => norm(a).includes(t))) o.push([d, "জেলা", d.n]); d.pl.forEach(p => { if (norm(p).includes(t)) o.push([d, "স্থান", p]) }); d.fd.forEach(f => { if (norm(f).includes(t)) o.push([d, "খাবার", f]) }) });
+      return `<div class="sr">${o.length ? o.slice(0, 14).map(([d, k, n]) => `<button onclick="q='';openD('${d.id}')"><b>${esc(n)}</b> <span class="mut note">${k}${k === "জেলা" ? "" : " · " + d.n}</span></button>`).join("") : `<p class="mut" style="padding:12px 14px;margin:0">কিছু পাওয়া যায়নি। অন্য কিছু লিখে দেখুন।</p>`}</div>`
+    }
+    const xcard = s => `<div class="xc"><div class="xc-top">${flag} বাংলাদেশ এক্সপ্লোরার</div><div class="xc-name">${esc(st.nick || "এক্সপ্লোরার")}</div><div class="xc-sub">ডিজিটাল ভ্রমণ পাসপোর্ট</div><div class="xc-st">${[["🗺️", s.dc, "জেলা ঘুরেছি"], ["🏞️", s.pc, "স্থান ঘুরেছি"], ["🍛", s.fc, "খাবার খেয়েছি"]].map(([e, n, l]) => `<div><span>${e}</span><b>${bn(n)}</b><span>${l}</span></div>`).join("")}</div><div class="xc-q">“বাংলার গল্প, আমার চোখে।”</div><button class="lnk" onclick="showWelcome(true)">✎ ডাকনাম বদলান</button></div>`;
+    function showWelcome(edit) { $("#wel").innerHTML = `<div class="wel" role="dialog" aria-modal="true" aria-labelledby="wt"><div class="wbg"><svg class="wm" viewBox="0 0 ${M.W.toFixed(0)} ${M.H.toFixed(0)}" aria-hidden="true">${M.paths.map(p => `<path d="${p}"/>`).join("")}</svg></div><div class="wc"><h2 id="wt">স্বাগতম, এক্সপ্লোরার ${flag}</h2><p>শুরু করার আগে বলুন, আপনাকে কী নামে ডাকব?</p><input id="nk" class="ni" maxlength="20" placeholder="আপনার ডাকনাম লিখুন…" aria-label="ডাকনাম" autocomplete="nickname" value="${esc(edit ? st.nick : "")}" onkeydown="if(event.key==='Enter')saveNick()"><p id="ne" style="color:#fda4af;min-height:24px;margin:8px 0 0"></p><button class="btn pri" onclick="saveNick()">যাত্রা শুরু করুন →</button>${edit && st.nick ? `<div><button class="lnk" style="margin-top:12px" onclick="$('#wel').innerHTML=''">বাতিল</button></div>` : ""}</div></div>`; setTimeout(() => { const e = $("#nk"); e && e.focus() }, 50) }
+    function saveNick() { const v = $("#nk").value.trim().replace(/\s+/g, " "); if (!v) { $("#ne").textContent = "একটি ডাকনাম লিখুন।"; return } st.nick = v.slice(0, 20); Store.set("bdx.v2", st); $("#wel").innerHTML = ""; render() }
+    function render() {
+      const a = document.activeElement, id = a && a.id, ss = a && a.selectionStart, s = stats(); document.documentElement.dataset.theme = th();
+      $("#page").innerHTML = `<header><div class="wrap hr"><span class="logo">${flag} আমার বাংলাদেশ</span><input id="gq" type="search" placeholder="জেলা, স্থান বা খাবার খুঁজুন..." aria-label="খুঁজুন" value="${esc(q)}" oninput="q=this.value;render()" autocomplete="off"><button class="btn" aria-label="রঙের ধরন বদলান" onclick="st.theme=th()==='dark'?'light':'dark';Store.set('bdx.v2',st);render()">${th() === "dark" ? "☀️" : "🌙"}</button>${results()}</div></header>
+<main class="wrap"><section class="hero"><div><p class="mut" style="font-size:20px;margin:0">হ্যালো, ${esc(st.nick || "এক্সপ্লোরার")} 👋</p><h1>বাংলাদেশ ঘুরে দেখতে প্রস্তুত?</h1><p class="mut" style="font-size:18px;margin:0">জেলা বেছে নাও, ঘুরে আসা স্থান ও খাওয়া খাবারে টিক দাও, তারপর তোমার এক্সপ্লোরার কার্ড ডাউনলোড করে শেয়ার করতে পারো বন্ধুদের সাথে।</p></div>${xcard(s)}</section>
+${s.dc ? "" : `<div class="card" style="margin-top:14px;text-align:center"><b>তোমার বাংলাদেশের গল্প এখান থেকেই শুরু।</b><br><span class="mut">মানচিত্রে একটি জেলা বেছে নাও, ঘুরে আসা স্থানে টিক দাও।</span></div>`}
+<h2>বাংলাদেশের মানচিত্র</h2><p class="mut note" style="margin:0 0 8px">যেকোনো জেলায় ট্যাপ করো  · <span style="background:var(--ac);padding:0 8px;border-radius:6px;color:#1a1200">✓ ঘোরা হয়েছে</span> · এখনও ঘোরা হয়নি</p>
+<div class="card">${mapSVG()}<p class="mut note" style="margin:8px 0 0; text-align: center;">${M.real ? "প্রকৃত জেলা-সীমানা ব্যবহার হচ্ছে।" : "⚠️ এটি আনুমানিক জেলা-বিভাজন, প্রকৃত সীমানা নয়।"}</p><div class="row" style="margin-top:10px">${geoRaw ? `<button class="btn" onclick="clearGeo()">ফাইল সরিয়ে ফেলুন</button>` : ""}</div></div>
+
+<h2 style="font-size:26px; text-align:center;">তোমার ভ্রমণ কার্ড</h2><canvas id="cv" class="cv" role="img" aria-label="${bn(s.dc)}টি জেলা, ${bn(s.pc)}টি স্থান, ${bn(s.fc)}টি খাবার — ভ্রমণ কার্ডের প্রিভিউ"></canvas>
+<div class="row" style="margin-bottom:60px"><button class="btn pri" id="dlb" onclick="dl()">এক্সপ্লোরার কার্ড ডাউনলোড করো ↓</button></div></main>`;
+      if (id) { const e = document.getElementById(id); if (e) { e.focus(); try { e.setSelectionRange(ss, ss) } catch { } } }
+      drawCard($("#cv")).catch(e => console.error(e))
+    }
+    function openD(id) {
+      const d = DS.find(x => x.id === id); if (!d) return; const row = (k, arr) => arr.map((n, i) => `<label class="ck"><input type="checkbox" ${st[k][d.id + ":" + i] ? "checked" : ""} onchange="tg('${k}','${d.id}',${i},this.checked)"><span>${esc(n)}</span></label>`).join("");
+      $("#mod").innerHTML = `<div class="ov" onclick="if(event.target===this)closeM()"><div class="sh" role="dialog" aria-modal="true" aria-labelledby="mt"><div style="display:flex;justify-content:space-between;gap:8px"><div><h3 id="mt" style="margin:0;font-size:28px">${d.n}</h3><div class="mut">${d.div} বিভাগ</div></div><button class="btn" onclick="closeM()" aria-label="বন্ধ করুন" style="align-self:flex-start">✕</button></div>
+<p><span id="ds" class="tag ${isV(d) ? "ok" : ""}">${isV(d) ? "✓ ঘোরা হয়েছে" : "এখনও ঘোরা হয়নি"}</span></p><p class="mut" style="margin:0">${d.div} বিভাগের জেলা — পরিচিত ${esc(d.pl[0])} ও ${esc(d.fd[0])}-এর জন্য।</p>
+<h4 style="font-size:19px;margin:14px 0 4px">🏞️ দর্শনীয় স্থান</h4><p class="mut note" style="margin:0">যেখানে গিয়েছ সেখানে টিক দাও — আমি এখানে গিয়েছি ✓</p>${row("p", d.pl)}
+<h4 style="font-size:19px;margin:18px 0 4px">🍛 জনপ্রিয় খাবার</h4><p class="mut note" style="margin:0">যা খেয়েছ তাতে টিক দাও — আমি এই খাবারটি খেয়েছি ✓</p>${row("f", d.fd)}
+<div class="done"><button class="btn pri" onclick="closeM()">হয়ে গেছে</button></div></div></div>`; const c = document.querySelector("#mod input"); if (c) document.querySelector("#mod .sh").focus?.()
+    }
+    function closeM() { $("#mod").innerHTML = "" }
+    function tg(k, id, i, on) { const key = id + ":" + i; if (on) st[k][key] = 1; else delete st[k][key]; Store.set("bdx.v2", st); const d = DS.find(x => x.id === id), e = $("#ds"); if (e) { e.className = "tag " + (isV(d) ? "ok" : ""); e.textContent = isV(d) ? "✓ ঘোরা হয়েছে" : "এখনও ঘোরা হয়নি" } render() }
+    function loadGeo(f) {
+      if (!f) return; const r = new FileReader(); r.onerror = () => toast("ফাইলটি পড়া যায়নি।"); r.onload = () => {
+        const prev = geoRaw; geoRaw = r.result; M = buildMap(); if (!M.real) { geoRaw = prev; M = buildMap(); toast("জেলার নাম মেলেনি। ফাইলে প্রতিটি জেলার নাম (ইংরেজি বা বাংলা) এবং Polygon/MultiPolygon থাকতে হবে।"); render(); return }
+        if (!Store.set("bdx.geo", geoRaw)) toast("ফাইলটি বড়, তাই শুধু এই সেশনে থাকবে।"); else toast("মানচিত্র যুক্ত হয়েছে।"); render()
+      }; r.readAsText(f)
+    }
+    function clearGeo() { geoRaw = null; try { localStorage.removeItem("bdx.geo") } catch { } M = buildMap(); render() }
+    /* ---------- কার্ড ---------- */
+    let FR = null; const fontReady = () => FR || (FR = Promise.race([Promise.all([500, 600, 700].map(w => document.fonts.load(`${w} 40px "Hind Siliguri"`, "আমার বাংলাদেশ"))), new Promise(r => setTimeout(r, 4000))]).catch(() => { }));
+    async function drawCard(c) {
+      await fontReady(); const x = c.getContext("2d"), W = 1080, H = 1350, s = stats(), FF = `"Hind Siliguri",system-ui,sans-serif`; c.width = W; c.height = H;
+      const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, "#0f172a"); g.addColorStop(1, "#115e59"); x.fillStyle = g; x.fillRect(0, 0, W, H);
+      const rg = x.createRadialGradient(850, 380, 0, 850, 380, 560); rg.addColorStop(0, "rgba(245,158,11,.25)"); rg.addColorStop(1, "rgba(245,158,11,0)"); x.fillStyle = rg; x.fillRect(0, 0, W, H);
+      const F = (w, z) => x.font = `${w} ${z}px ${FF}`, T = (t, a, b, col) => { x.fillStyle = col; x.textAlign = "left"; x.textBaseline = "alphabetic"; x.fillText(t, a, b) };
+      x.fillStyle = "#0f766e"; x.beginPath(); x.roundRect ? x.roundRect(70, 70, 68, 46, 9) : x.rect(70, 70, 68, 46); x.fill(); x.fillStyle = "#e11d48"; x.beginPath(); x.arc(100, 93, 13, 0, 7); x.fill();
+      const nk = st.nick || "এক্সপ্লোরার"; let z = 120; do { F(700, z); z -= 4 } while (x.measureText(nk).width > 940 && z > 40); T(nk, 70, 250, "#fff"); F(500, 40); T("বাংলাদেশ এক্সপ্লোরার", 72, 318, "#fcd34d");
+      const mw = 520, mh = 780, sc = Math.min(mw / M.W, mh / M.H); x.save(); x.translate(530 + (mw - M.W * sc) / 2, 380); x.scale(sc, sc); x.lineJoin = "round";
+      DS.forEach((d, i) => { if (!M.paths[i]) return; const p = new Path2D(M.paths[i]); x.fillStyle = isV(d) ? "#f59e0b" : "rgba(255,255,255,.1)"; x.fill(p); x.strokeStyle = "rgba(255,255,255,.45)"; x.lineWidth = .8; x.stroke(p) });
+      if (M.out) { x.strokeStyle = "rgba(255,255,255,.7)"; x.lineWidth = 1.6; x.stroke(new Path2D(M.out)) } x.restore();
+      [[s.dc, "জেলা ঘুরেছি"], [s.pc, "দর্শনীয় স্থান ঘুরেছি"], [s.fc, "খাবার খেয়েছি"]].forEach(([n, l], i) => { const y = 540 + i * 235; F(700, 150); const t = bn(n); T(t, 70, y, "#fff"); const w = x.measureText(t).width; F(600, 50); T("টি", 76 + w, y, "#fcd34d"); F(500, 40); T(l, 74, y + 64, "rgba(255,255,255,.9)") });
+      F(600, 42); T("“বাংলার গল্প, আমার চোখে”", 70, 1250, "#fff"); F(500, 28); T("আমার বাংলাদেশ 🇧🇩".replace(" 🇧🇩", ""), 70, 1300, "rgba(255,255,255,.6)")
+    }
+    async function dl() { const b = $("#dlb"); if (b.disabled) return; b.disabled = true; b.textContent = "কার্ড তৈরি হচ্ছে..."; try { const c = document.createElement("canvas"); await drawCard(c); const bl = await new Promise((r, j) => c.toBlob(o => o ? r(o) : j(new Error("toBlob")), "image/png")), u = URL.createObjectURL(bl), a = document.createElement("a"); a.href = u; a.download = "bangladesh-explorer-card.png"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000); toast("কার্ড ডাউনলোড হয়েছে! 🇧🇩") } catch (e) { console.error(e); toast("কার্ড তৈরি করা যায়নি, আবার চেষ্টা করুন।") } b.disabled = false; b.textContent = "এক্সপ্লোরার কার্ড ডাউনলোড করো ↓" }
+    addEventListener("keydown", e => { if (e.key === "Escape") closeM() });
+    render(); fontReady().then(render); if (!st.nick) showWelcome(false);
+  </script>
+  <footer>
+    <p style="text-decoration: none; color:white; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px; font-size: 12px;">
+      Developed
+      by<a style="color:white; margin-left: 3px;" href="https://www.facebook.com/siambro006">
+        Siam Al
+        Islam</a></p>
+  </footer>
+</body>
+
+</html>
