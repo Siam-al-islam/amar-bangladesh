@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>আমার বাংলাদেশ — তুমি বাংলাদেশ কতটা ঘুরেছ?</title>
+  <title>আমার বাংলাদেশ, তুমি বাংলাদেশ কতটা ঘুরেছ?</title>
   <meta name="description"
     content="জেলা বেছে নাও, ঘোরা স্থান ও খাওয়া খাবার টিক দাও, আর তোমার বাংলাদেশ ভ্রমণ কার্ড ডাউনলোড করো।">
   <meta property="og:title" content="আমার বাংলাদেশ">
@@ -720,7 +720,7 @@
       const t = norm(q); if (!t) return ""; const o = []; DS.forEach(d => { if ([d.n, ...d.en].some(a => norm(a).includes(t))) o.push([d, "জেলা", d.n]); d.pl.forEach(p => { if (norm(p).includes(t)) o.push([d, "স্থান", p]) }); d.fd.forEach(f => { if (norm(f).includes(t)) o.push([d, "খাবার", f]) }) });
       return `<div class="sr">${o.length ? o.slice(0, 14).map(([d, k, n]) => `<button onclick="q='';openD('${d.id}')"><b>${esc(n)}</b> <span class="mut note">${k}${k === "জেলা" ? "" : " · " + d.n}</span></button>`).join("") : `<p class="mut" style="padding:12px 14px;margin:0">কিছু পাওয়া যায়নি। অন্য কিছু লিখে দেখুন।</p>`}</div>`
     }
-    const xcard = s => `<div class="xc"><div class="xc-top">${flag} বাংলাদেশ এক্সপ্লোরার</div><div class="xc-name">${esc(st.nick || "এক্সপ্লোরার")}</div><div class="xc-sub">ডিজিটাল ভ্রমণ পাসপোর্ট</div><div class="xc-st">${[["🗺️", s.dc, "জেলা ঘুরেছি"], ["🏞️", s.pc, "স্থান ঘুরেছি"], ["🍛", s.fc, "খাবার খেয়েছি"]].map(([e, n, l]) => `<div><span>${e}</span><b>${bn(n)}</b><span>${l}</span></div>`).join("")}</div><div class="xc-q">“বাংলার গল্প, আমার চোখে।”</div><button class="lnk" onclick="showWelcome(true)">✎ ডাকনাম বদলান</button></div>`;
+    const xcard = s => `<div class="xc"><div class="xc-top">${flag} বাংলাদেশ এক্সপ্লোরার</div><div class="xc-name">${esc(st.nick || "এক্সপ্লোরার")}</div><div class="xc-sub">তোমার ঘুরে দেখা বাংলাদেশ</div><div class="xc-st">${[["🗺️", s.dc, "জেলা ঘুরেছি"], ["🏞️", s.pc, "স্থান ঘুরেছি"], ["🍛", s.fc, "খাবার খেয়েছি"]].map(([e, n, l]) => `<div><span>${e}</span><b>${bn(n)}</b><span>${l}</span></div>`).join("")}</div><div class="xc-q">“বাংলার গল্প, আমার চোখে।”</div><button class="lnk" onclick="showWelcome(true)">✎ ডাকনাম বদলান</button></div>`;
     function showWelcome(edit) { $("#wel").innerHTML = `<div class="wel" role="dialog" aria-modal="true" aria-labelledby="wt"><div class="wbg"><svg class="wm" viewBox="0 0 ${M.W.toFixed(0)} ${M.H.toFixed(0)}" aria-hidden="true">${M.paths.map(p => `<path d="${p}"/>`).join("")}</svg></div><div class="wc"><h2 id="wt">স্বাগতম, এক্সপ্লোরার ${flag}</h2><p>শুরু করার আগে বলুন, আপনাকে কী নামে ডাকব?</p><input id="nk" class="ni" maxlength="20" placeholder="আপনার ডাকনাম লিখুন…" aria-label="ডাকনাম" autocomplete="nickname" value="${esc(edit ? st.nick : "")}" onkeydown="if(event.key==='Enter')saveNick()"><p id="ne" style="color:#fda4af;min-height:24px;margin:8px 0 0"></p><button class="btn pri" onclick="saveNick()">যাত্রা শুরু করুন →</button>${edit && st.nick ? `<div><button class="lnk" style="margin-top:12px" onclick="$('#wel').innerHTML=''">বাতিল</button></div>` : ""}</div></div>`; setTimeout(() => { const e = $("#nk"); e && e.focus() }, 50) }
     function saveNick() { const v = $("#nk").value.trim().replace(/\s+/g, " "); if (!v) { $("#ne").textContent = "একটি ডাকনাম লিখুন।"; return } st.nick = v.slice(0, 20); Store.set("bdx.v2", st); $("#wel").innerHTML = ""; render() }
     function render() {
